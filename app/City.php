@@ -19,9 +19,9 @@ class City extends Model
         return $this->hasMany(Client::class);
     }
 
-/*
+
     public function donations()
     {
-        return $this->belongsToManny(Donation::class);
-    }*/
+        return $this->hasMany(Donation::class);
+    }
 }

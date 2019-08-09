@@ -52,9 +52,9 @@ class Client extends Model
         return $this->belongsTo(City::class);
     }
     
-    /*public function donations()
+    public function donations()
     {
         return $this->hasMany(Donation::class);
-    }*/
+    }
     
 }

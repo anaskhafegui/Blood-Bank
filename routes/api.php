@@ -39,9 +39,19 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
 
     Route::group(['middleware' => 'auth:api',], function () {
      
-        Route::get('posts', 'MainController@posts');
-        Route::get('filterposts', 'MainController@filterposts');
-        Route::post('toggle/{id}', 'MainController@toggle');
+        Route::get('posts', 'PostsController@posts');
+        Route::get('showpost/{id}', 'PostsController@showpost');
+        Route::get('filterposts', 'PostsController@filterposts');
+        Route::post('toggle/{id}', 'PostsController@toggle');
+
+        Route::get('donate', 'DonationController@r_donate');
+        Route::get('showdonate/{id}', 'DonationController@showdonate');
+        Route::get('call-requests/{id}', 'DonationController@phonecall');
+        Route::get('filterbloodtype', 'DonationController@filterblood');
+        Route::get('filtergovernrate', 'DonationController@filtergovern');
+        Route::post('createrequest', 'DonationController@createrequest');
+
+
         
     });
 });

@@ -18,7 +18,7 @@ class CreateDonationsTable extends Migration
             $table->integer('client_id');
             $table->string('name');
             $table->string('contact');
-            $table->string('hospital');
+            $table->string('hospital-name');
             $table->decimal('longitude');
             $table->decimal('latitude');
             $table->integer('blood_type_id');

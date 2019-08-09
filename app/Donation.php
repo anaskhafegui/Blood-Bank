@@ -8,15 +8,24 @@ use App\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Client;
 
+
+
+
 class Donation extends Model
 {
-    public function cities()
+
+    protected $table = 'donations';
+
+
+    protected $fillable = ['name','contact','hospital-name','blood_type_id','age','notes','nbags','city_id','longitude','latitude','client_id'];
+
+    public function city()
     {
-        return $this->belongsTonManny(City::class);
+        return $this->belongsTo(City::class);
     }
-    public function blood_types()
+    public function blood_type()
     {
-        return $this->belongsToManny(Blood_type::class);
+        return $this->belongsTo(Blood_type::class);
     }
     public function client()
     {
