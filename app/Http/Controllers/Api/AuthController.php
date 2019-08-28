@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Client;
+use App\Token;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -129,4 +130,69 @@ class AuthController extends Authenticatable
             
         }
     }
+
+    public function registerToken(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'token' => 'required',
+            'platform' => 'required|in:android,ios',
+        ]);
+        if ($validator->fails()) {
+            return responsejson(0, $validator->errors()->first(), $validator->errors());
+        }
+        Token::where('token',$request->token)->delete(); 
+    }
+
+
+    public function editclient(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'name' => 'min:3|max:50',
+            'email' => 'email|unique:clients,email',
+            'password' => 'confirmed|min:6|max:20',
+            'phone' => 'unique:clients,phone|numeric',
+            'city_id' => 'exists:cities,id',
+            'blood_type_id' => 'exists:blood_types,id',
+            'donation_last_date' => 'date',
+        ]);
+        if ($validator->fails()) {
+            return responsejson(0, $validator->errors()->first(), $validator->errors());
+        }
+
+        $request->merge(['password' => bcrypt($request->password)]);
+        $client = Client::where('api_token', $request->api_token)->first()->update($request->all());
+
+        return responsejson(1, 'successfull Edit', $client) ;
+    }
+    public function registerNtoken(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'token' => 'required',
+            'type' => 'required|in:android,ios',
+        ]);
+
+        if ($validator->fails()) {
+            return responsejson(0, $validator->errors()->first(), $validator->errors());
+        }
+
+        Token::where('token', $request->token)->delete();
+        $request->user()->tokens()->create($request->all());
+        return responsejson(1, 'تم التسجيل بنجاح ');
+    }
+
+    public function removeNtoken(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'token' => 'required',
+            'type' => 'required|in:android,ios',
+        ]);
+
+        if ($validator->fails()) {
+            return responsejson(0, $validator->errors()->first(), $validator->errors());
+        }
+
+        Token::where('token', $request->token)->delete();
+        return responsejson(1, 'تم الحذف بنجاح');
+    }
+   
 }

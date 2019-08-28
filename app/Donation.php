@@ -17,7 +17,7 @@ class Donation extends Model
     protected $table = 'donations';
 
 
-    protected $fillable = ['name','contact','hospital-name','blood_type_id','age','notes','nbags','city_id','longitude','latitude','client_id'];
+    protected $fillable = ['name','contact','hospital-name','blood_types_id','age','notes','nbags','city_id','longitude','latitude','client_id'];
 
     public function city()
     {
@@ -33,6 +33,6 @@ class Donation extends Model
     }
     public function notification()
     {
-        return $this->belongTo(Notification::class);
+        return $this->hasOne(Notification::class,'donations_id');
     }
 }

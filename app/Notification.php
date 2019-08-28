@@ -2,18 +2,21 @@
 
 namespace App;
 
-use App\User;
+use App\Client;
 use App\Donation;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    public function users()
+
+    protected $fillable = ['content','donations_id','title','read_statue'];
+    
+    public function clients()
     {
-        return $this->belongsToManny(User::class);
+        return $this->belongsToMany(Client::class);
     }
     public function donation()
     {
-        return $this->hasOne(Donation::class);
+        return $this->belongsTo(Donation::class,'donations_id');
     }
 }

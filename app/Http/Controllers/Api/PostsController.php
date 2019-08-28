@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Post;
 use App\Client;
+use App\Notification;
+
+use App\Donation;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -65,11 +69,23 @@ public function posts(Request $request)
         $client = Client::find($userid);
         $post   = Post::find($id);
 
-        $client->posts()->toggle($post); 
+        $client->posts()->toggle($post->id); 
         
 
-        return responsejson(1, 'success',$client);
+        return responsejson(1, 'success');
 
     }
+
+    public function ListFavourite(Request $request)
+    {
+        $client = $request->user();
+
+        $favourite = $client->posts()->where('client_id', $client->id)->get();
+
+        return responsejson(1, 'successfully list favourite', $favourite);
+    }
+
+
+ 
 }
     

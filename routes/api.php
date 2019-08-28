@@ -24,8 +24,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::post('resetpassword', 'AuthController@resetPassword');
     Route::post('verifyclient', 'AuthController@verifyclient');
    
-    Route::get('governorates', 'MainController@governorates');
-    Route::get('cities', 'MainController@cities');
+    
     
 
    
@@ -38,11 +37,26 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
 
 
     Route::group(['middleware' => 'auth:api',], function () {
+
+        // Cities And Governorate
+        Route::get('governorates', 'MainController@governorates');
+        Route::get('cities', 'MainController@cities');
+
+        // Edit Profile
+
+        Route::post('editclient', 'AuthController@editclient');
+        Route::post('registerNtoken', 'AuthController@registerNtoken');
+        Route::post('removeNtoken', 'AuthController@removeNtoken');
+
+        
      
         Route::get('posts', 'PostsController@posts');
         Route::get('showpost/{id}', 'PostsController@showpost');
         Route::get('filterposts', 'PostsController@filterposts');
         Route::post('toggle/{id}', 'PostsController@toggle');
+        Route::get('favorites', 'PostsController@ListFavourite');
+
+        
 
         Route::get('donate', 'DonationController@r_donate');
         Route::get('showdonate/{id}', 'DonationController@showdonate');
@@ -50,6 +64,21 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
         Route::get('filterbloodtype', 'DonationController@filterblood');
         Route::get('filtergovernrate', 'DonationController@filtergovern');
         Route::post('createrequest', 'DonationController@createrequest');
+
+        Route::post('selecttnotifications', 'NotificationController@select');
+
+        Route::get('count_unreading', 'NotificationController@count_unreading');
+        Route::get('listnotifications', 'NotificationController@listnotifications');
+        Route::get('read/{id}', 'NotificationController@read');
+
+
+        Route::get('config', 'NotificationController@config');
+        Route::post('contactus', 'NotificationController@contactus');
+        
+        
+
+    
+        
 
 
         

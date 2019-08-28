@@ -16,6 +16,7 @@ class CreateClientNotificationTable extends Migration
         Schema::create('client_notification', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('client_id');
+            $table->boolean('read_statue');
             $table->integer('notification_id');
             $table->timestamps();
         });

@@ -3,8 +3,9 @@
 namespace App;
 
 use App\Donation;
-use App\Blood_type;
+use App\BloodType;
 use App\Notification;
+use App\Token;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Client as Authenticatable;
 
@@ -16,7 +17,7 @@ class Client extends Model
         'password', 'api_token', 'pin_code'
     ];
 
-    protected $fillable = ['name', 'email', 'password', 'last_donation_date', 'city_id', 'bithday', 'phone', 'blood_type'];
+    protected $fillable = ['name', 'email', 'password', 'last_donation_date', 'city_id', 'bithday', 'phone', 'blood_type_id'];
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -25,7 +26,7 @@ class Client extends Model
 
     public function notifications()
     {
-        return $this->hasMany(Notification::class);
+        return $this->belongsToMany(Notification::class);
     }
     public function posts()
     {
@@ -33,12 +34,16 @@ class Client extends Model
     }
     public function blood_types()
     {
-        return $this->hasMany(Blood_type::class);
+        return $this->belongsToMany(BloodType::class, 'blood_type_client');
     } 
     public function governorates()
     {
-        return $this->hasMany(Governorate::class);
+        return $this->belongsToMany(Governorate::class,'client_governorate');
     } 
+    public function tokens()
+    {
+        return $this->hasMany(Token::class);
+    }
 
     // belongs to methodes
 

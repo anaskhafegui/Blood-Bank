@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->dateTime('bithday');
             $table->string('phone');
-            $table->string('blood_type');
+            $table->integer('blood_types_id');
             $table->string('city_id');
             $table->dateTime('last_donation_date');
             $table->integer('pin_code')->nullable();
