@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@inject('model', 'App\Governorate')
+@inject('model', 'App\Role')
 
 
 @section('page_title')
 
 
 
-<title>Create Governorate</title>
+<title>Create Role</title>
     
 @endsection
 
@@ -53,7 +53,7 @@
         {!! Form::model($model,[
             'action' => 'RoleController@store'
         ]) !!}
-                @include('patials.form')
+                @include('patials.role_form')
                 @include('patials.validation_errors')
         {!! Form::close() !!}
         </div>
@@ -61,9 +61,6 @@
 
       </div>
       <!-- /.box-body -->
-      <div class="box-footer">
-        Footer
-      </div>
       <!-- /.box-footer-->
     </div>
     <!-- /.box -->

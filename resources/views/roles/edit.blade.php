@@ -21,7 +21,7 @@
 
 <section class="content-header">
     <h1>
-        Edit Governorate
+        Edit roles
       <small></small>
     
   </section>
@@ -50,7 +50,7 @@
             'action' => ['RoleController@update',$model->id],
             'method' => 'PUT'
         ]) !!}
-                @include('patials.form')
+                @include('patials.role_form')
                 @include('patials.validation_errors')
         {!! Form::close() !!}
         </div>

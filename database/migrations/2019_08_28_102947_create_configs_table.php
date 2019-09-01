@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class config extends Migration
+class CreateConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class config extends Migration
             $table->string('instgram-url');
             $table->string('twitter-url');
             $table->string('facebook-url');
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
          
         Schema::create('contactus', function (Blueprint $table) {
@@ -32,7 +32,7 @@ class config extends Migration
             $table->string('cphone');
             $table->string('title');
             $table->string('content');
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 
@@ -43,6 +43,6 @@ class config extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_post');
+        Schema::dropIfExists('config');
     }
 }

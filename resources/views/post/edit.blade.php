@@ -34,7 +34,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">list of govenorates</h3>
+        <h3 class="box-title">list of Post</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -47,10 +47,10 @@
       <div class="box-body">
    
         {!! Form::model($model,[
-            'action' => ['PostController@update',$model->id],
+            'action' => ['PostController@update',$category_id,$model->id],
             'method' => 'PUT'
         ]) !!}
-                @include('patials.post_form')
+                @include('post.form')
                 @include('patials.validation_errors')
         {!! Form::close() !!}
         </div>

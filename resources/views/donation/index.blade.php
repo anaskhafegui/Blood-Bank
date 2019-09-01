@@ -43,8 +43,9 @@
         </div>
       </div>
       <div class="box-body">
+      <a href="{{url(route('governorate.create'))}}" class="btn btn-primary"><i class="fa fa-plus"> New Donation</i></a>
       <div class="clearfix"></div>
-        
+      <hr>
       @include('flash::message')
       @if (count($records))
 
@@ -54,7 +55,7 @@
               <tr>
                 <th>#</th>
                 <th >Name</th>
-            
+                <th class="text-center">Edit</th>
                 <th class="text-center">Delete</th>
               </tr>
             </thead>
@@ -63,7 +64,8 @@
               <tr>
                 <td>{{$loop->iteration}}</td>
                 <td><a href="{{url(route('donation.index',$record->id))}}">{{$record->name}}</a></td>
-      
+              <td class="text-center"><i class="fa fa-edit">Edit</i>
+              </td>
               <td class="text-center">
                   {!! Form::open([
                     'action' => ['DonationController@destroy',$record->id],

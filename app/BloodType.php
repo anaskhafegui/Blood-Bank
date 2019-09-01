@@ -23,9 +23,9 @@ class BloodType extends Model
 
 
 
-   /* public function donations()
+    public function donations()
     {
         return $this->belongsToMany(Donation::class);
-    }*/
+    }
     
 }

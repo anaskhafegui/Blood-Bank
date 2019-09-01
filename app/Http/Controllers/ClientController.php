@@ -7,14 +7,20 @@ use App\Client;
 
 class ClientController extends Controller
 {
-    public function index(){
-   
-    
-    $records = Client::paginate(20);
+  
+public function index(Request $request)
+    {
+        $search = $request->input('filter');
+        if ($search != null) {
+            $records = Client::where('name', 'LIKE', '%' . $request->filter . '%')->orWhere('email', 'LIKE', '%' . $request->filter . '%')->get();
 
-    return view('client.index',compact('records'));
+        }else {
+            $records = Client::paginate(20);
+        }
 
-}
+        return view('client.index', compact('records'));
+    }
+
 public function create(){
 
     $client = new Client;
@@ -38,7 +44,7 @@ public function store(Request $request){
 
     flash('success')->success();
 
-    return redirect(route('Client.index'));
+    return redirect(route('Clients.index'));
 
 }
 public function edit($id){

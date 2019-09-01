@@ -17,7 +17,7 @@ class Client extends Model
         'password', 'api_token', 'pin_code'
     ];
 
-    protected $fillable = ['name', 'email', 'password', 'last_donation_date', 'city_id', 'bithday', 'phone', 'blood_type_id'];
+    protected $fillable = ['name', 'email', 'password', 'last_donation_date', 'city_id', 'bithday', 'phone', 'blood_types_id'];
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -47,14 +47,14 @@ class Client extends Model
 
     // belongs to methodes
 
-    public function blood_type()
+    public function bloodtype()
     {
-        return $this->belongsTo(Blood_type::class);
+        return $this->belongsTo(BloodType::class,'blood_types_id');
     }
 
     public function city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class,'city_id');
     }
     
     public function donations()

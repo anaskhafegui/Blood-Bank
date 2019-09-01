@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('page_title')
 
-<title>Clients</title>
+<title>Create admin</title>
     
 @endsection
 
 @section('small_title')
-<span class="logo-mini"><b>C</b>lients</span>
+<span class="logo-mini"><b>U</b>ser</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Clients</b></span>
+      <span class="logo-lg"><b>User</b> Egypt</span>
     
 @endsection
 
@@ -19,21 +19,18 @@
 
 <section class="content-header">
     <h1>
-        Clients
+        List User
       <small></small>
     
   </section>
 
-  
-
   <!-- Main content -->
-   <!-- Main content -->
-   <section class="content">
+  <section class="content">
 
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">list Clients</h3>
+        <h3 class="box-title">list Users</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -44,13 +41,12 @@
         </div>
       </div>
       <div class="box-body">
+        <a class="btn btn-primary" href="{{url(route('user.create'))}}"><i class="fa fa-plus"></i>New User</a>
 
         {!! Form::open([
             'method' => 'get',
-            'action' => 'ClientController@index'
+            'action' => 'UsersController@index'
         ]) !!}
-        @include('functions.search')
-        <br>
 
         @if (count($records))
             <div class="table-responsive">
@@ -60,11 +56,10 @@
                             <th>#</th>
                             <th class="text-center">NAME</th>
                             <th class="text-center">email</th>
-                            <th class="text-center">birthdate</th>
-                            <th class="text-center">phone</th>
-                            <th class="text-center">bloodtype</th>
-                            <th class="text-center">city</th>
-                            <th class="text-center">DELETE</th>
+                            <th class="text-center">roles</th>
+                            <th class="text-center">edit</th>
+                            <th class="text-center">delete</th>
+
                         </tr>
                     </thead>
 
@@ -74,22 +69,22 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$record->name}}</td>
                             <td>{{$record->email}}</td>
-                            <td>{{$record->bithday}}</td>
-                            <td>{{$record->phone}}</td>
-                            <td>{{$record->bloodtype['type']}}</td>
-                            <td>{{$record->city['name']}}</td>
-
-                                <td>
-                                    {!! Form::open([
-                                        'action' => ['ClientController@destroy', $record->id],
-                                        'method' => 'DELETE'
-                                    ]) !!}
-
-                                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-
-                                    {!! Form::close() !!}
-
-                                </td>
+                            <td>
+                                @foreach ($record->roles as $role)
+                                <span class="label label-success">{{$role->display_name}}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{url(route('user.edit' , $record->id))}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                            </td>
+                            <td>
+                                {!! Form::open([
+                                    'action' => ['UsersController@destroy', $record->id],
+                                    'method' => 'DELETE'
+                                ]) !!}
+                                    <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                                {!! Form::close() !!}
+                            </td>
                             </tr>
                         @endforeach
                     </tbody>

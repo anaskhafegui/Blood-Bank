@@ -54,7 +54,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th >Name</th>
+                <th> Name</th>
+                <th> Display Name</th>
                 <th class="text-center">Edit</th>
                 <th class="text-center">Delete</th>
               </tr>
@@ -64,6 +65,7 @@
               <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$record->name}}</td>
+                <td>{{$record->display_name}}</td>
               <td class="text-center"><a href="{{url(route('roles.edit',$record->id))}}" class="btn btn-success btn-xs"><i class="fa fa-edit">Edit</i></a>
               </td>
               <td class="text-center">
@@ -90,9 +92,6 @@
 </div>
       </div>
       <!-- /.box-body -->
-      <div class="box-footer">
-        Footer
-      </div>
       <!-- /.box-footer-->
     </div>
     <!-- /.box -->

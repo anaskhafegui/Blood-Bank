@@ -1,34 +1,22 @@
 @extends('layouts.app')
-
 @inject('model', 'App\Governorate')
-
 
 @section('page_title')
 
-
-
-<title>Create post</title>
+<title>Edit admin</title>
     
 @endsection
 
 @section('small_title')
-<span class="logo-mini"><b>P</b>ost</span>
+<span class="logo-mini"><b>U</b>ser</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>post</b> Egypt</span>
+      <span class="logo-lg"><b>User</b> Egypt</span>
     
 @endsection
 
 
 @section('home')
 
-
-
-<section class="content-header">
-    <h1>
-        Create post
-      <small></small>
-    
-  </section>
   <!-- Main content -->
   <section class="content">
 
@@ -36,7 +24,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">create post</h3>
+        <h3 class="box-title">Edit Admin</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -50,13 +38,15 @@
 
         @include('patials.validation_errors')
 
-        {!! Form::model($model , [
-            'action' => ['PostController@store'  , $category_id]
+        {!! Form::model($row , [
+            'action' => ['UsersController@update', $row->id],
+            'role' => 'form',
+            'method' => 'put'
             ]) !!}
 
-        @include('post.form')
+        @include('Users.form')
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">New Post</button>
+            <button class="btn btn-primary" type="submit">Edit Admin</button>
         </div>
 
         {!! Form::close() !!}

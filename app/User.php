@@ -34,11 +34,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function cities()
-    {
-        return $this->belongsToMany(City::class);
-    }
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -48,17 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function notifications()
+    public function getRolesListAttribute()
     {
-        return $this->belongsToManny(Notification::class);
+        return $this->roles()->pluck('id')->toArray();
     }
-    public function blood_types()
-    {
-        return $this->belongsToManny(Blood_type::class);
+
+    public function roles(){
+
+      return  $this->belongsToMany('App\Role');
     }
-    //     public function posts()
-    //         {
-    //          return $this->hasManny(Post::class);
-    //         }
-    // }
+
 }

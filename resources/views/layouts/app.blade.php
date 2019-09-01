@@ -170,7 +170,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -213,27 +213,19 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Post</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('post')}}"><i class="fa fa-circle-o"></i> Posts</a></li>post
-            <li><a href="{{url('category')}}"><i class="fa fa-circle-o"></i> Category</a></li>
-            
-          </ul>
-        </li>
+       
         
-        <li><a href="{{url('governorate')}}"><i class="fa fa-list"></i> <span>governorate</span></a></li>
-        <li><a href="{{url('donation')}}"><i class="fa fa-circle-o"></i> Dontation</a></li>
+            <li><a href="{{url('category')}}"><i class="fa fa-newspaper-o"></i> Category</a></li>post
+            
+      
+        <li><a href="{{url('governorate')}}"><i class="fa fa-map-marker"></i> <span>governorate</span></a></li>
+        <li><a href="{{url('donation')}}"><i class="fa fa-heart"></i> Dontation</a></li>
             <li><a href="{{url('clients')}}"><i class="fa fa-users"></i> Clinets</a></li>
-        <li><a href="{{url('users')}}"><i class="fa fa-users"></i> <span>المستخدمين</span></a></li>
-        <li><a href="{{url('roles')}}"><i class="fa fa-list"></i> <span>رتب المستخدمين</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Settings</span></a></li>
+            
+        <li><a href="{{url('user')}}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="{{url('roles')}}"><i class="fa fa-list"></i> <span>Users Roles</span></a></li>
+        <li><a href="{{url('reset_password')}}"><i   class="fa fa-key" ></i> Reset Password</a></li>
+        <li><a href="{{url('config/1')}}"><i class="fa fa-book"></i> <span>Configs</span></a></li>
         
       </ul>
     </section>
@@ -472,5 +464,6 @@
     $('.sidebar-menu').tree()
   })
 </script>
+@stack('scripts')
 </body>
 </html>
