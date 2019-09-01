@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    public function index()
-    {
+   
+    public function index(Request $request)
+
+    {    
         $records = User::paginate(20);
 
         return view('Users.index', compact('records'));

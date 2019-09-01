@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Permission;
 
 class AutoCheckPermission
 {
@@ -21,7 +22,7 @@ class AutoCheckPermission
         if($permission)
         {
             if(!$request->user()->can($permission->name)){
-               abort(403);
+               abort('403');
             }
         }
         return $next($request);
