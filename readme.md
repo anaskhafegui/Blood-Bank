@@ -43,4 +43,4 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## License
 
-TMade with ❤️ by Ahmed Nassar, licensed under the MIT License licensed under the [MIT license](https://opensource.org/licenses/MIT).
+TMade with ❤️ by Ahmed Nassar(https://github.com/anaskhafegui), licensed under the MIT License licensed under the [MIT license](https://opensource.org/licenses/MIT).
