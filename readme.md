@@ -1,11 +1,12 @@
 ## BloodBank
 
-## Introduction
+### Introduction
+    Application make connection between Donation-request and donators more easily,using FCM notifay
+    
+### Technology
 
-This is a PROJECT IVORY repository for a picked up free design from uplabs.com website written in kotlin using MVC design pattern  screens "Login, Profile and Friends" screens.I've implemented each screen and it's functions "NOT ONLY DESIGN OR XML FILES"and made it ready to be customized on your project if you wish to use it just clone this project and start customizing.
 
-
-
+      
 
 ## Contributing
 
