@@ -5,7 +5,11 @@
     
 ### Technology
 
-
+<ul>
+    <li>Laravel (APIs)</li>
+    <li>SQL</li>
+    <li>Admin-Panel LTE</li>
+</ul>
       
 
 ## Contributing
@@ -14,4 +18,4 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## License
 
-TMade with by [Anas khafegy](https://github.com/anaskhafegui), licensed under the MIT License licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Made by [Anas khafegy](https://github.com/anaskhafegui), licensed under the MIT License licensed under the [MIT license](https://opensource.org/licenses/MIT).
